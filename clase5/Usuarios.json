@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Gaston",
+    "apellido": "Pardo",
+    "edad": 17,
+    "curso": "11"
+  },
+  {
+    "nombre": "Gaston 2",
+    "apellido": "Pardo 2",
+    "edad": 19,
+    "curso": "12"
+  },
+  {
+    "nombre": "Gaston 3",
+    "apellido": "Pardo 3",
+    "edad": 20,
+    "curso": "13"
+  },
+  {
+    "nombre": "Gaston 4",
+    "apellido": "Pardo 4",
+    "edad": 20,
+    "curso": "13"
+  }
+]
