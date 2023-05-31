@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 8087;
-let frase = "frase inicial";
+let frase = "frase inicial hola mundo colombia, falcao";
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -45,8 +45,9 @@ app.delete("/api/palabras/:pos", (req, res)=>{
   let { pos } = req.params;
   const posArray = Number(pos) - 1;
   const palabras = frase.split(" ");
-  frase = palabras.splice(posArray, 1).join(" ");
-  res.json({response: true});
+  palabras.splice(posArray, 1);
+  frase = palabras.join(" ");
+  res.json({response: frase});
 })
 
 app.listen(PORT, ()=> { console.log(`http://localhost:${PORT}`)});
