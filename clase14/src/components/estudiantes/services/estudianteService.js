@@ -1,26 +1,40 @@
 const estudianteModel = require("../../../models/estudiante");
 
 class Estudiante {
-  async getAll(){
-    const response = await estudianteModel.find({});
+  async getAll(id, pagination){
+    let showme = Number(pagination.showme);
+    let page = pagination.page;
+    let response = id
+    ? await estudianteModel.findById(id)
+    : await estudianteModel.find({}).skip((page - 1) * showme).limit(Number(showme));
     return response;
   }
 
   async create(payload){
-    const newStudent = await estudianteModel.create(payload);
+    try {
+      return await estudianteModel.create(payload); 
+    } catch (error) {
+      console.log(error);
+      return {status: "failed"}
+    }
+    
+  /* 
+    const newStudent = new estudianteModel(payload);
+    await newStudent.save();
     return newStudent;
+  */
   }
 
-  async update(id){
-    // let { id } = req.params;
-    // const response = await estudiante.update(id);
-    // res.json(response);
+  async update(id, estudiante){
+    try {
+      return await estudianteModel.findByIdAndUpdate(id, estudiante, { new: true });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async delete(id){
-    // let { id } = req.params;
-    // const response = await estudiante.delete(id);
-    // res.json(response);
+    return await estudianteModel.findByIdAndDelete(id);
   }
 }
 
