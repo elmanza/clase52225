@@ -5,7 +5,8 @@ const config = {
 }
 
 const mongo = {
-  mongo_local: process.env.MONGO_LOCAL
+  mongo_local: process.env.MONGO_LOCAL,
+  mongo_atlas: process.env.MONGO_ATLAS
 }
 
 module.exports = { config, mongo };

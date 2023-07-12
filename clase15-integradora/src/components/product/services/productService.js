@@ -1,5 +1,6 @@
 
 const productModel = require("../../../models/mongo/product");
+const faker = require("faker");
 class Product {
   async getProduct(id){
     try {
@@ -10,6 +11,24 @@ class Product {
     } catch (error) {
       console.log(error);
       return [];
+    }
+  }
+
+  async bulkCreate(cant){
+    try {
+      for (let i = 0; i < cant; i++) {
+        const product = {
+          "nombre": faker.commerce.productName(),
+          "descripcion": faker.lorem.sentence(),
+          "precio": faker.commerce.price(),
+          "stock": faker.random.number(),
+          "imagen": faker.image.imageUrl()
+        }
+        await productModel.create(product);
+      }
+      return {res: true};
+    } catch (error) {
+      console.log(error);
     }
   }
 

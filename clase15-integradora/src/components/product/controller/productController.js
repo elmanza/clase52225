@@ -7,9 +7,17 @@ class Product {
     res.json(response);
   }
 
+  async bulkCreate(req, res, next){
+    let { cant } = req.params;
+    let response = await productService.bulkCreate(Number(cant));
+    res.json(response);
+  }
+
+  
+
   async create(req, res, next){
     let payload = req.body;
-    let response = await productService.update(payload);
+    let response = await productService.create(payload);
     res.json(response);
   }
 

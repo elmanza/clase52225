@@ -3,7 +3,10 @@ const { Schema, model } = require("mongoose");
 const collectionName = "product";
 
 const collectionSchema = new Schema({
-  nombre: String,
+  nombre: {
+    type: String,
+    index: true
+  },
   descripcion: String,
   precio: Number,
   stock: Number,

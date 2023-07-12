@@ -6,6 +6,7 @@ module.exports = app =>{
   app.use("/product", router);
   router.get("/", productController.getProduct);
   router.get("/:id", productController.getProduct);
+  router.get("/bulkcreate/:cant", productController.bulkCreate);
   router.post("/", productController.create);
   router.put("/:id", productController.update);
   router.delete("/:id", productController.delete);

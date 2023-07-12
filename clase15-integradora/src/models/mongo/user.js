@@ -8,7 +8,8 @@ const collectionSchema = new Schema({
   email: {
     unique: true,
     type: String,
-    required: true
+    required: true,
+    index: true
   },
   edad: {
     type: Date

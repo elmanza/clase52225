@@ -1,20 +1,21 @@
 const express = require("express");
 const cors = require("cors");
-const http = require("http");
+let {Server: HttpServer} = require("http");
 const { config } = require("./config");
 const serverRoutes = require("./routes");
 const path = require("path");
 const Socket = require("./utils/sockets/socket.io");
+require('./config/mongoDB');
 class Server {
   constructor(port) {
-
+    this.httpServer;
+    this.socket;
     this.app = express();
     this.PORT = port;
     this.settings();
     this.views();
     this.middlewares();
-    this.server = http.createServer(this.app);
-    this.socket = new Socket(this.server);
+    this.sockets();
     this.route();
   }
 
@@ -31,7 +32,11 @@ class Server {
 
   middlewares(){
     this.app.use(cors("*"));
+  }
 
+  sockets(){
+    this.httpServer = new HttpServer(this.app);
+    this.socket = new Socket(this.httpServer);
   }
 
   route(){
@@ -47,7 +52,7 @@ class Server {
   }
 
   listen(){
-    this.server.listen(this.PORT, ()=>{console.log(`http://localhost:${this.PORT}`)});
+    this.httpServer.listen(this.PORT, ()=>{console.log(`http://localhost:${this.PORT}`)});
   }
 }
 

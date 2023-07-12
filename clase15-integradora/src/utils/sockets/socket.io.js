@@ -1,4 +1,4 @@
-const socketIO = require("socket.io");
+const { Server: SocketIO } = require("socket.io");
 
 class Socket {
   static instancia = undefined;
@@ -7,7 +7,7 @@ class Socket {
       return Socket.instancia;
     }
     Socket.instancia = this;
-    this.io = new socketIO(http);
+    this.io = new SocketIO(http);
   }
 
   init(){
