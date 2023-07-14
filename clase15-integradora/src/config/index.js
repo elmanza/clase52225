@@ -1,7 +1,8 @@
 require("dotenv").config();
 
 const config = {
-  port: process.env.PORT
+  port: process.env.PORT,
+  cookie_key: process.env.COOKIE_KEY
 }
 
 const mongo = {

@@ -4,6 +4,8 @@ let {Server: HttpServer} = require("http");
 const { config } = require("./config");
 const serverRoutes = require("./routes");
 const path = require("path");
+const cookie = require("cookie-parser");
+const session = require("express-session");
 const Socket = require("./utils/sockets/socket.io");
 require('./config/mongoDB');
 class Server {
@@ -12,9 +14,9 @@ class Server {
     this.socket;
     this.app = express();
     this.PORT = port;
+    this.middlewares();
     this.settings();
     this.views();
-    this.middlewares();
     this.sockets();
     this.route();
   }
@@ -32,6 +34,12 @@ class Server {
 
   middlewares(){
     this.app.use(cors("*"));
+    this.app.use(cookie(`${config.cookie_key}`));
+    this.app.use(session({
+      secret: 'secret52225',
+      resave: true,
+      saveUninitialized: true
+    }))
   }
 
   sockets(){
