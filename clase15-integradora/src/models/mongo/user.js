@@ -11,6 +11,9 @@ const collectionSchema = new Schema({
     required: true,
     index: true
   },
+  password: {
+    type: String
+  },
   edad: {
     type: Date
   },
@@ -19,6 +22,7 @@ const collectionSchema = new Schema({
     default: true
   },
   photo: String,
+  token: String
 });
 
 const modelEntity = model(collectionName, collectionSchema);

@@ -34,8 +34,8 @@
   <div class="container">
     <div class="card">
       <div>
-        <h1>Inicio de sessión</h1>
-        <form action="/auth/login" method="POST" class="d-flex flex-column gap-2">
+        <h1>Recupera tu contraseña</h1>
+        <form action="/auth/recovery" method="POST" class="d-flex flex-column gap-2">
           <div class="input_field">
             <label for="email">Ingresa tu email</label>
             <input type="text" id="email" name="email" required>
@@ -49,8 +49,7 @@
           </div>
         </form>
         <div style="display: flex; justify-content: space-between; margin-top: 8px;">
-          <a href="/auth/register">Registrate</a>
-          <a href="/auth/recovery">Olvidaste la contraseña?</a>
+          <a href="/auth/login">Iniciar Sesi[on</a>
         </div>
       </div>
       <div>
@@ -58,22 +57,5 @@
       </div>
     </div>
   </div>
-  <script>
-    let btn = document.getElementById("btnCookie");
-
-    btn.addEventListener("click", async e => {
-      console.log("Click!!!");
-
-      const res = await fetch('/auth/cookies', {
-        method: "GET",
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      console.log("Mi Respuesta es: ", (await res.json()));
-    });
-
-    
-  </script>
 </body>
 </html>

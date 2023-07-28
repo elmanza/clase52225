@@ -34,8 +34,16 @@
   <div class="container">
     <div class="card">
       <div>
-        <h1>Inicio de sessión</h1>
-        <form action="/auth/login" method="POST" class="d-flex flex-column gap-2">
+        <h1>Registro</h1>
+        <form action="/auth/register" method="POST" class="d-flex flex-column gap-2">
+          <div class="input_field">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          <div class="input_field">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required>
+          </div>
           <div class="input_field">
             <label for="email">Ingresa tu email</label>
             <input type="text" id="email" name="email" required>
@@ -44,13 +52,16 @@
             <label for="password">Ingresa tu password</label>
             <input type="text" id="password" name="password" required>
           </div>
+          <div class="input_field">
+            <label for="edad">Edad</label>
+            <input type="date" id="edad" name="edad" required>
+          </div>
           <div>
-            <button style="width: 100%; margin-top: 5px; cursor: pointer;" type="submit" class="btn btn-success">Iniciar sesion</button>
+            <button style="width: 100%; margin-top: 5px; cursor: pointer;" type="submit" class="btn btn-success">Registrate</button>
           </div>
         </form>
         <div style="display: flex; justify-content: space-between; margin-top: 8px;">
-          <a href="/auth/register">Registrate</a>
-          <a href="/auth/recovery">Olvidaste la contraseña?</a>
+          <a href="/auth/login">Iniciar Sesión</a>
         </div>
       </div>
       <div>

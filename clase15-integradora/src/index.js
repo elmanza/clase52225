@@ -7,6 +7,8 @@ const path = require("path");
 const cookie = require("cookie-parser");
 const session = require("express-session");
 const Socket = require("./utils/sockets/socket.io");
+const passport = require("passport");
+const GithubStrategy = require('passport-github').Strategy;
 require('./config/mongoDB');
 class Server {
   constructor(port) {
@@ -36,10 +38,30 @@ class Server {
     this.app.use(cors("*"));
     this.app.use(cookie(`${config.cookie_key}`));
     this.app.use(session({
-      secret: 'secret52225',
+      secret: config.session_secret,
       resave: true,
       saveUninitialized: true
-    }))
+    }));
+
+    // Passport
+    this.app.use(passport.initialize());
+    this.app.use(passport.session());
+
+    // passport.use(new GithubStrategy({
+    //   clientID: config.github_client_id,
+    //   clientSecret: config.github_secret_key,
+    //   callbackURL: config.github_callback
+    // },(accessToken, refreshToken, profile, done)=>{
+    //   return done(profile)
+    // }))
+
+    // passport.serializeUser((user, done)=>{
+    //   done(null, user);
+    // });
+    
+    // passport.deserializeUser(obj, (obj, done)=>{
+    //   done(null, obj);
+    // })
   }
 
   sockets(){

@@ -18,12 +18,46 @@ class Auth {
   }
 
   async loginView(req, res, next){
+    console.log(req.session);
     res.render('login', {});
   }
+
+  async recoveryView(req, res, next){
+    res.render('recovery', {});
+  }
+
+  async dashboardView(req, res, next){
+    console.log(".........");
+    console.log(req.user);
+    res.render('dashboard', {});
+  }
   
+  async registerView(req, res, next){
+    res.render('register', {});
+  }
+
   async login(req, res, next){
     let { email, password } = req.body;
-    res.cookie('username', email, {maxAge: 20000, httpOnly: true}).json(true);
+    const response = await authService.login({email, password});
+    if( response.status === 200){
+      req.session.user = response.response;
+    }
+
+    console.log(response, req.session.user);
+    res.json(response)
+    // res.redirect('/auth/login');
+    
+  }
+
+  async register(req, res, next){
+    const response = await authService.register(req.body);
+    res.json(response);
+  }
+
+  async recovery(req, res, next){
+    let { email, password } = req.body;
+    const response = await authService.recovery({email, password});
+    res.json(response);
   }
 
   async getCookies(req, res, next){
