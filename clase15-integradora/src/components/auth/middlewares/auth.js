@@ -18,6 +18,20 @@ const isNotAuth = (req, res,next) => {
   }
 }
 
+const verifyRole = (role) => {
+  return (req, res,next) => {
+    try {
+      let _roles = Array.isArray(role) ? role : [role];
+      if(!req.user) return res.send("No estas loggeado!");
+      if(_roles.includes(req.user?.rol)) return next();
+      res.send("No tienes permisos, Sigue intentando!");
+    } catch (error) {
+      res.send("Salió algo mal!")
+    }
+  }
+}
+
+
 const getAuthJwt = async (req, res, next) => {
   try {
     const authorization = req.headers.authorization || '';
@@ -44,5 +58,6 @@ const getAuthJwt = async (req, res, next) => {
 module.exports = {
     isAuth,
     isNotAuth,
-    getAuthJwt
+    getAuthJwt,
+    verifyRole
 }

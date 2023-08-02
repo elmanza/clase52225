@@ -22,7 +22,11 @@ const collectionSchema = new Schema({
     default: true
   },
   photo: String,
-  token: String
+  token: String,
+  rol: {
+    type: String,
+    default: 'customer'
+  }
 });
 
 const modelEntity = model(collectionName, collectionSchema);

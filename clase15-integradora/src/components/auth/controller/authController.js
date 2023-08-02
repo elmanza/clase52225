@@ -21,7 +21,7 @@ class Auth {
     console.log(req.session);
     res.render('login', {});
   }
-
+  
   async recoveryView(req, res, next){
     res.render('recovery', {});
   }
@@ -63,6 +63,23 @@ class Auth {
   async getCookies(req, res, next){
     // let { name } = req.params;
     res.json(req.cookies);
+  }
+
+  async loginViewClase22(req, res, next){
+    res.render('testClase22', {});
+  }
+
+  async loginclase22(req, res, next){
+    let { email, password } = req.body;
+    const response = await authService.login({email, password});
+    if( response.status === 200){
+      req.session.user = response.response;
+    }
+
+    console.log(response, req.session.user);
+    res.cookie('coderTokenClase22', response.response.token, { maxAge: 60 * 60 * 1000, httpOnly: true }).json(response);
+    // res.redirect('/auth/login');
+    
   }
 }
 
