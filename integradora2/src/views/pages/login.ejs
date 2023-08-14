@@ -1,0 +1,36 @@
+
+<%- include('../partials/header') %>
+
+<div class="card">
+    <div>
+      <h1>Inicio de sessión</h1>
+      <form action="/auth/login" method="POST" class="d-flex flex-column gap-2">
+        <div class="input_field">
+          <label for="email">Ingresa tu email</label>
+          <input type="text" id="email" name="email" required>
+        </div>
+        <div class="input_field">
+          <label for="password">Ingresa tu password</label>
+          <input type="text" id="password" name="password" required>
+        </div>
+        <div>
+          <button style="width: 100%; margin-top: 5px; cursor: pointer;" type="submit" class="btn btn-success">Iniciar sesion</button>
+        </div>
+      </form>
+      <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+        <a href="/auth/register">Registrate</a>
+        <a href="/auth/recovery">Olvidaste la contraseña?</a>
+      </div>
+    </div>
+    <div>
+      <button id="btnCookie">Obtener Cookies</button>
+      <button id="authBtn">Auth Button</button>
+      <button id="notAuthBtn">Not Auth Button</button>
+    </div>
+  </div>
+  <script>
+    const btnCookie = document.getElementById('btnCookie');
+    const authButton = document.getElementById('authButton');
+    const notAuthBtn = document.getElementById('notAuthBtn');
+  </script>
+<%- include('../partials/footer') %>

@@ -11,7 +11,7 @@ module.exports = app =>{
   router.get("/login/github", authController.loginView);
   router.get("/register", authController.registerView);
   router.get("/recovery", authController.recoveryView);
-  router.get("/dashboard", getAuthJwt, verifyRole(['customer', 'admin']), authController.dashboardView);
+  router.get("/dashboard", getAuthJwt, verifyRole('customer', 'admin'), authController.dashboardView);
   router.post("/login",  authController.login);
   router.post("/register", authController.register);
   router.post("/recovery", authController.recovery);
