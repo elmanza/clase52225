@@ -13,4 +13,6 @@ module.exports = (app) =>{
     });
     router.get('/uno', userController.dashboardUno);
     router.get('/dos', userController.dashboardDos);
+
+    router.get('/test', (req, res)=>{res.json({response: "Hola chicos!"})});
 }

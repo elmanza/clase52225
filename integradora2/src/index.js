@@ -6,6 +6,7 @@ const path = require('path');
 const { Server: HttpServer} = require('http');
 const { config } = require("./config");
 const Socket = require('./utils/socket/socket.io');
+const MongoDB = require('./config/mongoDB');
 
 class Server {
   constructor(){
@@ -15,10 +16,11 @@ class Server {
     this.views();
     this.sockets();
     this.routes();
+    this.mongoDB = new MongoDB();
   }
 
   middlewares(){
-    this.app.use(cors('*'));
+    this.app.use(cors());
     this.app.use(cookie(`${config.cookie_key}`));
   }
 

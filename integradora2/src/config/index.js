@@ -6,8 +6,9 @@ const config = {
     jwt_algorithm: process.env.HS256
 }
 
-const mongoDB = {
-
-}
-
-module.exports = { config, mongoDB }
+const mongo = {
+    mongo_local: process.env.MONGO_LOCAL,
+    mongo_atlas: process.env.MONGO_ATLAS
+  }
+  
+  module.exports = { config, mongo };
