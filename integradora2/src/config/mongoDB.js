@@ -8,18 +8,16 @@ class MongoDB{
   static instance;
   constructor(){
     if(MongoDB.instance){
-      console.log("Ya existia la instancia");
       return MongoDB.instance;
     }
     this.connection = this.connect();
     MongoDB.instance = this;
-    console.log("Se creó una nueva instancia!");
   }
 
   async connect(){
     try {
       let connection = await mongoose.connect(mongo.mongo_atlas);
-      console.log("Conexión exitosa");
+      console.log(" ~~ Conexión exitosa a la base de Datos ~~ ");
       return connection
     } catch (error) {
       console.log(error);

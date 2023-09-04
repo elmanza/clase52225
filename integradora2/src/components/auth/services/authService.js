@@ -1,68 +1,30 @@
 
-const userModel = require("../../../models/mongo/user");
-const JWTService = require("../../../utils/JWT/JWTServices");
-const { createHash, isValidPassword } = require("../middlewares/bcrypt");
+const userService = require("../../user/services/userService");
+const JWTService = require("../../../utils/JWT/jwt");
+const { createHash, isValidPassword } = require("../../../utils/bcrypt");
 const faker = require("faker");
+const Boom = require("@hapi/boom");
+const cartService = require("../../cart/services/cartService");
+const wishlistService = require("../../wishlist/services/wishlistService");
 class Auth {
-  async getUser(id){
-    try {
-      let response = id
-        ? await userModel.findById(id)
-        : await userModel.find({});
-      return response;
-    } catch (error) {
-      console.log(error);
-      return [];
-    }
-  }
 
-  async login({email, password}){
-    try {
-      let user = await userModel.findOne({
-        email: email
-      });
-      console.log(user);
-      if(!user) return {status:401, response: "No existes en la BD!"}
-      if(!isValidPassword(password, user)) return {status:403, response: "Credenciales inválidas"}
-      return {status:200, response: user};
-    } catch (error) {
-      console.log(error);
-      return [];
+  async login({email, password, transfer = false}, {cart, wishlist}){
+    const user = await userService.findByEmail(email);
+    if(!user) throw Boom.unauthorized("Credenciales inválidas");
+    if(!isValidPassword(password, user)) throw Boom.unauthorized("Credenciales inválidas");
+    const token = await JWTService.generateJWT({id: user._id});
+    if (transfer) {
+      if (cart.length) await cartService.transferCartFromSessions(user._id, cart[0].products);
+      // if (wishlist.length) await wishlistService.transferWishlistFromSessions(user._id, wishlist);
     }
-  }
-
-  async register(userObj){
-    try {
-      let newUser = {
-        ...userObj,
-        password: createHash(userObj.password),
-        token: ''
-      };
-      let user = await userModel.create(newUser);
-      let token = await JWTService.generateJWT({id: user._id});
-      let updatedUser = await userModel.findByIdAndUpdate(user._id, {token}, { new: true });
-      
-      return {status:201, updatedUser};
-    } catch (error) {
-      console.log(error);
-      return [];
-    }
+    return await userService.updateUser(user._id, {token});
   }
 
   async recovery({email, password}){
-    try {
-      let user = await userModel.findOne({
-        email: email
-      });
-      console.log(user);
-      if(!user) return {status:401, response: "No existe en la BD!"}
-      let updatedPassword = await userModel.findByIdAndUpdate(user._id, {password: createHash(password)}, { new: true });
-      console.log({updatedPassword});
-      return {status:200, response: updatedPassword};
-    } catch (error) {
-      console.log(error);
-      return [];
-    }
+    let user = await userService.findByEmail(email);
+    if(!user) throw Boom.badRequest('No existe este usuario en la Base de datos');
+    let updatedPassword = await userService.updateUser(user._id, {password: createHash(password)}, true);
+    return updatedPassword;
   }
 
   async bulkCreate(cant){
@@ -75,25 +37,9 @@ class Auth {
           "stock": faker.random.number(),
           "imagen": faker.image.imageUrl()
         }
-        await productModel.create(product);
+        await userService.create(product);
       }
       return {res: true};
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async createCookie(payload){
-    try {
-      return await productModel.create(payload);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async getCookies(id, payload){
-    try {
-      return await productModel.findByIdAndUpdate(id, payload, { new: true });
     } catch (error) {
       console.log(error);
     }

@@ -1,12 +1,37 @@
-
+const userServices = require("../services/userService");
 
 class User {
-    dashboardUno(req, res, next){
-        res.render('dashboardUno', {});
+    async get(req, res, next){
+        let { user_id } = req.params;
+        const response = await userServices.get(user_id);
+        res.json(response);
     }
 
-    dashboardDos(req, res, next){
-        res.render('dashboardDos', {});
+    async getAll(req, res, next){
+        const response = await userServices.get();
+        res.json(response);
+    }
+
+    async create(req, res, next){
+        const response = await userServices.create(req.body);
+        res.json(response);
+    }
+
+    async deleteUser(req, res, next){
+        let { user_id } = req.params;
+        const response = await userServices.updateUser(user_id, {isActive: false});
+        res.json(response);
+    }
+
+    async updateUser(req, res, next){
+        let { user_id } = req.params;
+        const response = await userServices.updateUser(user_id, req.body);
+        res.json(response);
+    }
+
+    async updatePassword(req, res, next){
+        const response = await userServices.updatePassword(req.body, req.user);
+        res.json(response);
     }
 }
 

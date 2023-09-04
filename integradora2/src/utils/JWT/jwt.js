@@ -5,7 +5,7 @@ const { config } = require('../../config');
 const generateJWT = async payload => {
     try {
       const token = await JWT.sign(payload, config.jwt_secret, {
-        expiresIn: '24h', //config.jwt_experies * 1000 || 6000000,
+        expiresIn: config.jwt_experies * 1000 || 60000000,
         algorithm: config.jwt_algorithm || 'HS256'
       });
       return token;
@@ -17,7 +17,7 @@ const generateJWT = async payload => {
 
 const verify = async token => {
   try {
-    const certificated = await JWT.verify(token, config.jwt_secret, {
+    const certificated = JWT.verify(token, config.jwt_secret, {
       algorithm: [config.jwt_algorithm]
     });
     return certificated;
@@ -28,7 +28,7 @@ const verify = async token => {
 
 const decode = async token => {
   try {
-    const decodeToken = await JWT.decode(token, config.jwt_secret, {
+    const decodeToken = JWT.decode(token, config.jwt_secret, {
       algorithm: [config.jwt_algorithm]
     });
     return decodeToken;
