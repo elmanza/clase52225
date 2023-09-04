@@ -1,0 +1,272 @@
+[
+  {
+    "name": {
+      "es": "Lavado en Ciclo Normal",
+      "en": "Normal Cycle Wash"
+    },
+    "code": "m-careinstructions-01",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Ciclo Delicado",
+      "en": "Delicate Cycle Wash"
+    },
+    "code": "m-careinstructions-02",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Agua Fría",
+      "en": "Cold Water Wash"
+    },
+    "code": "m-careinstructions-03",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Agua Caliente",
+      "en": "Hot Water Wash"
+    },
+    "code": "m-careinstructions-04",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado con Colores Similares",
+      "en": "Wash with Similar Colors"
+    },
+    "code": "m-careinstructions-05",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Bolsa de Lavandería",
+      "en": "Wash in Laundry Bag"
+    },
+    "code": "m-careinstructions-06",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Ciclo Rápido",
+      "en": "Quick Cycle Wash"
+    },
+    "code": "m-careinstructions-07",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado a Máquina",
+      "en": "Machine Wash"
+    },
+    "code": "m-careinstructions-08",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado a Mano",
+      "en": "Hand Wash"
+    },
+    "code": "m-careinstructions-09",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Seco",
+      "en": "Dry Clean"
+    },
+    "code": "m-careinstructions-10",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "No Lavar",
+      "en": "Do Not Wash"
+    },
+    "code": "m-careinstructions-11",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Secado a Máquina",
+      "en": "Tumble Dry"
+    },
+    "code": "m-careinstructions-12",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Secado al Aire",
+      "en": "Air Dry"
+    },
+    "code": "m-careinstructions-13",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Planchar",
+      "en": "Iron"
+    },
+    "code": "m-careinstructions-14",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "No Planchar",
+      "en": "Do Not Iron"
+    },
+    "code": "m-careinstructions-15",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Puede utilizar blanqueador",
+      "en": "Bleach Allowed"
+    },
+    "code": "m-careinstructions-16",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Separar Colores",
+      "en": "Separate Colors"
+    },
+    "code": "m-careinstructions-17",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Voltear Del Revés",
+      "en": "Turn Inside Out"
+    },
+    "code": "m-careinstructions-18",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Cierre de Cremalleras y Botones",
+      "en": "Zip Up Zippers and Buttons"
+    },
+    "code": "m-careinstructions-19",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Evitar Fricción",
+      "en": "Avoid Friction"
+    },
+    "code": "m-careinstructions-20",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Evitar Exposición Directa al Sol",
+      "en": "Avoid Direct Sunlight"
+    },
+    "code": "m-careinstructions-21",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Retirar Accesorios",
+      "en": "Remove Accessories"
+    },
+    "code": "m-careinstructions-22",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Secar en Superficie Plana",
+      "en": "Dry Flat"
+    },
+    "code": "m-careinstructions-23",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Ciclo Normal",
+      "en": "Normal Cycle Wash"
+    },
+    "code": "m-careinstructions-24",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Ciclo Delicado",
+      "en": "Delicate Cycle Wash"
+    },
+    "code": "m-careinstructions-25",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Agua Fría",
+      "en": "Cold Water Wash"
+    },
+    "code": "m-careinstructions-26",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Agua Caliente",
+      "en": "Hot Water Wash"
+    },
+    "code": "m-careinstructions-27",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado con Colores Similares",
+      "en": "Wash with Similar Colors"
+    },
+    "code": "m-careinstructions-28",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Bolsa de Lavandería",
+      "en": "Wash in Laundry Bag"
+    },
+    "code": "m-careinstructions-29",
+    "icon": null,
+    "isActive": true
+  },
+  {
+    "name": {
+      "es": "Lavado en Ciclo Rápido",
+      "en": "Quick Cycle Wash"
+    },
+    "code": "m-careinstructions-30",
+    "icon": null,
+    "isActive": true
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "name": {
+      "en": "Black",
+      "es": "Negro"
+    },
+    "hex": "#000000"
+  },
+  {
+    "name": {
+      "en": "White",
+      "es": "Blanco"
+    },
+    "hex": "#FFFFFF"
+  },
+  {
+    "name": {
+      "en": "Pink",
+      "es": "Rosa"
+    },
+    "hex": "#FFC0CB"
+  },
+  {
+    "name": {
+      "en": "Red",
+      "es": "Rojo"
+    },
+    "hex": "#FF0000"
+  },
+  {
+    "name": {
+      "en": "Blue",
+      "es": "Azul"
+    },
+    "hex": "#0000FF"
+  },
+  {
+    "name": {
+      "en": "Green",
+      "es": "Verde"
+    },
+    "hex": "#008000"
+  },
+  {
+    "name": {
+      "en": "Purple",
+      "es": "Violeta"
+    },
+    "hex": "#800080"
+  },
+  {
+    "name": {
+      "en": "Gray",
+      "es": "Gris"
+    },
+    "hex": "#808080"
+  },
+  {
+    "name": {
+      "en": "Brown",
+      "es": "Marrón"
+    },
+    "hex": "#A52A2A"
+  },
+  {
+    "name": {
+      "en": "Beige",
+      "es": "Beige"
+    },
+    "hex": "#F5F5DC"
+  }
+]

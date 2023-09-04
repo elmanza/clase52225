@@ -1,0 +1,122 @@
+[
+    {
+        "name": {
+            "es": "Camisetas y Polos",
+            "en": "T-shirts and Polos"
+        },
+        "code": "m-category-01",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Camisas",
+            "en": "Shirts"
+        },
+        "code": "m-category-02",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Sudaderas y Chaquetas",
+            "en": "Sweatshirts and Jackets"
+        },
+        "code": "m-category-03",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Pantalones y Vaqueros",
+            "en": "Pants and Jeans"
+        },
+        "code": "m-category-04",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Ropa Interior",
+            "en": "Underwear"
+        },
+        "code": "m-category-05",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Trajes y Blazers",
+            "en": "Suits and Blazers"
+        },
+        "code": "m-category-06",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Ropa de Dormir",
+            "en": "Sleepwear"
+        },
+        "code": "m-category-07",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Zapatos",
+            "en": "Shoes"
+        },
+        "code": "m-category-08",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Vestidos",
+            "en": "Dresses"
+        },
+        "code": "m-category-09",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Blusas y Tops",
+            "en": "Blouses and Tops"
+        },
+        "code": "m-category-10",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Faldas",
+            "en": "Skirts"
+        },
+        "code": "m-category-11",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Ropa Interior y Lencería",
+            "en": "Underwear and Lingerie"
+        },
+        "code": "m-category-12",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Chaquetas y Abrigos",
+            "en": "Jackets and Coats"
+        },
+        "code": "m-category-13",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Ropa Deportiva",
+            "en": "Sportswear"
+        },
+        "code": "m-category-14",
+        "isActive": true
+    },
+    {
+        "name": {
+            "es": "Accesorios",
+            "en": "Accessories"
+        },
+        "code": "m-category-15",
+        "isActive": true
+    }
+]
