@@ -7,7 +7,7 @@ const collectionSchema = new Schema({
     type: Map,
     of: String
   },
-  code: String,
+  description: String,
   category_id: {
     type: Schema.Types.ObjectId,
     ref: 'categories'

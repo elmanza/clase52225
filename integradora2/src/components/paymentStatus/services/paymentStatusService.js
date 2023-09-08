@@ -8,6 +8,15 @@ class PaymentStatus {
   async create(payload) {
     return await PaymentStatusModel.create(payload);
   }
+
+  async update(_id, payload) {
+    return await PaymentStatusModel.updateOne({ _id }, { ...payload }, { new: true });
+  }
+
+  async delete(id = null){
+    if(id) return await PaymentStatusModel.findByIdAndDelete(id);
+    return await PaymentStatusModel.deleteMany({});
+  }
 }
 
 module.exports = new PaymentStatus();

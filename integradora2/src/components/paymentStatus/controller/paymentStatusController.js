@@ -30,6 +30,26 @@ class PaymentStatus {
       next(error);
     }
   }
+
+  async update(req, res, next) {
+    try {
+      const { paymentstatus_id } = req.params;
+      const response = await paymentStatus.update(paymentstatus_id, req.body);
+      res.json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async delete(req, res, next) {
+    try {
+      const { paymentstatus_id } = req.params;
+      const response = await paymentStatus.delete(paymentstatus_id);
+      res.json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new PaymentStatus();

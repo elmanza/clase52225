@@ -12,6 +12,15 @@ class Status {
   async create(payload) {
     return await statusModel.create(payload);
   }
+
+  async update(_id, payload) {
+    return await statusModel.updateOne({ _id }, { ...payload }, { new: true });
+  }
+
+  async delete(id = null){
+    if(id) return await statusModel.findByIdAndDelete(id);
+    return await statusModel.deleteMany({});
+  }
 }
 
 module.exports = new Status();

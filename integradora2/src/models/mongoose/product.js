@@ -46,6 +46,10 @@ const collectionSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'product_type'
   }],
+  outfits: [{
+    type: Schema.Types.ObjectId,
+    ref: 'outfit'
+  }],
   price: {
     type: Map,
     of: Schema.Types.Decimal128

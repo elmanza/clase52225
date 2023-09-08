@@ -5,7 +5,7 @@ const collectionName = "payment_status";
 const collectionSchema = new Schema({
   name: {
     type: String,
-    enum: ['PENDING', 'PAID', 'REFUND', 'DELETE'],
+    enum: ['PENDING', 'PAID', 'REFUND', 'DELETED'],
     default: 'PENDING',
     unique: true
   },

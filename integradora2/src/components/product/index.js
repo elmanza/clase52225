@@ -8,4 +8,6 @@ module.exports = (app) =>{
     router.get('/', productController.getAll);
     router.get('/:product_id', productController.get);
     router.post('/', upload.any(), parseJsonFields, productController.create);
+    router.put('/:product_id', productController.update);
+    router.delete('/:product_id', productController.delete);
 }

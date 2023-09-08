@@ -1,9 +1,11 @@
 const { Router } = require("express");
-const __Controller = require("./controller/__Controller");
+const genderController = require("./controller/genderController");
 module.exports = (app) =>{
     const router = new Router();
-    app.use('/product', router);
-    router.get('/', __Controller.getAll);
-    router.get('/:product_id', __Controller.get);
-    router.post('/', __Controller.create);
+    app.use('/gender', router);
+    router.get('/', genderController.getAll);
+    router.get('/:gender_id', genderController.get);
+    router.post('/', genderController.create);
+    router.put('/:gender_id', genderController.update);
+    router.delete('/:gender_id', genderController.delete);
 }

@@ -6,16 +6,18 @@ const collectionSchema = new Schema({
   name: {
     type: String,
     enum: ['STANDARD', 'EXPRESS', 'SAME_DAY'],
-    default: 'PENDING',
+    default: 'STANDARD',
     unique: true
   },
   description: String,
-  charge: Number,
+  charge: {
+    type: Map,
+    of: Schema.Types.Decimal128
+  },
   type: {
     type: String,
     enum: ['PORCENTAGE', 'SUM'],
-    default: 'PENDING',
-    unique: true
+    default: 'PORCENTAGE'
   }
 });
 

@@ -30,6 +30,26 @@ class PaymentMethods {
       next(error);
     }
   }
+
+  async update(req, res, next) {
+    try {
+      const { paymentmethods_id } = req.params;
+      const response = await paymentMethodsServices.update(paymentmethods_id, req.body);
+      res.json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async delete(req, res, next) {
+    try {
+      const { paymentmethods_id } = req.params;
+      const response = await paymentMethodsServices.delete(paymentmethods_id);
+      res.json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new PaymentMethods();

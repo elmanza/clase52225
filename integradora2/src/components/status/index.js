@@ -7,4 +7,6 @@ module.exports = (app) =>{
     router.get('/:status_id', statusController.get);
     router.get('/:type/list', statusController.getByType);
     router.post('/', statusController.create);
+    router.put('/:status_id', statusController.update);
+    router.delete('/:status_id', statusController.delete);
 }

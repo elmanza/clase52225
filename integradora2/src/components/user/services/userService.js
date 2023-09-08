@@ -1,65 +1,32 @@
 const userModel = require("../../../models/mongoose/user");
 const { createHash, isValidPassword } = require("../../../utils/bcrypt");
 const JWTService = require("../../../utils/JWT/jwt");
-
+const Boom = require("@hapi/boom");
 
 class User {
 
-  /*
-
   async get(id = null) {
-    try {
-      return await userService.getUser(id);
-    } catch (error) {
-      return { response: "Hubo un error!" };
-    }
-  } 
-
-  async create(userObj) {
-    try {
-      let user = await userService.createUser(userObj);
-      let token = await JWTService.generateJWT({ id: user._id });
-      let updatedUser = await userService.updateUser(user._id, { token });
-      return { status: 200, updatedUser };
-    } catch (error) {
-      console.log(error);
-    }
+    return id ? await userModel.findById(id) : await userModel.find({});
   }
 
-  */
-
-  
-  async get(id = null) {
-    try {
-      return id ? await userModel.findById(id) : await userModel.find({});
-    } catch (error) {
-      return { response: "Hubo un error!" };
-    }
+  async getByRole(query = {}) {
+    return await userModel.find({ ...query });
   }
 
   async create(userObj) {
-    try {
-      let newUser = {
-        ...userObj,
-        password: createHash(userObj.password),
-        token: ''
-      };
-      let user = await userModel.create(newUser);
-      let token = await JWTService.generateJWT({ id: user._id });
-      let updatedUser = await userModel.findByIdAndUpdate(user._id, { token }, { new: true });
-      return { status: 200, updatedUser };
-    } catch (error) {
-      console.log(error);
-    }
+    let newUser = {
+      ...userObj,
+      password: createHash(userObj.password),
+      token: ''
+    };
+    let user = await userModel.create(newUser);
+    let token = await JWTService.generateJWT({ id: user._id });
+    return await userModel.findByIdAndUpdate(user._id, { token }, { new: true });
   }
 
   async deleteUser(id) {
-    try {
-      return await this.updateUser(id, { isActive: false });
-      // return await userModel.findByIdAndDelete(id);
-    } catch (error) {
-      console.log(error);
-    }
+    return await this.updateUser(id, { isActive: false });
+    // return await userModel.findByIdAndDelete(id);
   }
 
   async updateUser(id, user, updatePassword = false) {
@@ -67,28 +34,20 @@ class User {
     return await userModel.findByIdAndUpdate(id, user, { new: true });
   }
 
-  async updatePassword(credentials, user) {
-    try {
-      if (credentials?.newPassword) {
-        if (!isValidPassword(credentials.password, user)) return { status: 403, response: "Contraseña inválidas" };
-      }
-      const password = createHash(credentials.newPassword);
-      return await userModel.findByIdAndUpdate(id, { password }, { new: true });
-    } catch (error) {
-      console.log(error);
+  async updatePassword(user_id, {password, newPassword}, user) {
+    if (newPassword) {
+      if (!isValidPassword(password, user)) throw Boom.unauthorized("Credenciales inválidas");
     }
+    const _password = createHash(newPassword);
+    return await userModel.findByIdAndUpdate(user_id, { password: _password }, { new: true });
   }
 
   async findByEmail(email) {
-    try {
-      return await userModel.findOne({
-        email: email
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    return await userModel.findOne({
+      email: email
+    });
   }
-  
+
 }
 
 module.exports = new User();

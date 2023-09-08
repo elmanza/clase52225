@@ -2,28 +2,25 @@ const careInstructions = require("../../../models/mongoose/careInstructions");
 
 class CareInstruction {
   async get(id = null) {
-    try {
-      return id ? await careInstructions.findById(id) : await careInstructions.find({});
-    } catch (error) {
-      return { response: "Hubo un error!" };
-    }
+    return id ? await careInstructions.findById(id) : await careInstructions.find({});
   }
 
   async create(payload) {
-    try {
-      return await careInstructions.create(payload);
-    } catch (error) {
-      console.log(error);
-    }
+    return await careInstructions.create(payload);
   }
 
   async delete(id = null){
-    try {
-      if(id) return await careInstructions.findByIdAndDelete(id);
-      return await careInstructions.deleteMany({});
-    } catch (error) {
-      console.log(error);
-    }
+    if(id) return await careInstructions.findByIdAndDelete(id);
+    return await careInstructions.deleteMany({});
+  }
+
+  async update(_id, payload) {
+    return await careInstructions.updateOne({ _id }, { ...payload }, { new: true });
+  }
+
+  async delete(id = null){
+    if(id) return await careInstructions.findByIdAndDelete(id);
+    return await careInstructions.deleteMany({});
   }
 }
 

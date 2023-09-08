@@ -6,4 +6,6 @@ module.exports = (app) =>{
     router.get('/', paymentMethodsController.getAll);
     router.get('/:paymentmethods_id', paymentMethodsController.get);
     router.post('/', paymentMethodsController.create);
+    router.put('/:paymentmethods_id', paymentMethodsController.update);
+    router.delete('/:paymentmethods_id', paymentMethodsController.delete);
 }

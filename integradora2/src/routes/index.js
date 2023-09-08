@@ -17,6 +17,10 @@ const invoiceTypeApi = require('../components/invoiceType');
 const paymentsApi = require('../components/payments');
 const paymentMethodsApi = require('../components/paymentMethods');
 const paymentStatusApi = require('../components/paymentStatus');
+const genderApi = require('../components/gender');
+const outfitApi = require('../components/outfits');
+const tagsApi = require('../components/tags');
+const userccApi = require('../components/user_cc');
 
 module.exports = app => {
     authApi(app);
@@ -38,6 +42,10 @@ module.exports = app => {
     paymentsApi(app);
     paymentMethodsApi(app);
     paymentStatusApi(app);
+    genderApi(app);
+    outfitApi(app);
+    tagsApi(app);
+    userccApi(app);
     app.get("/", (req,res,next)=>{
         console.log(req.socketIO)
         res.send("Todo ok!");

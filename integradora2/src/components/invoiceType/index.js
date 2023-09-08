@@ -6,4 +6,6 @@ module.exports = (app) =>{
     router.get('/', invoiceTypeController.getAll);
     router.get('/:invoice_type_id', invoiceTypeController.get);
     router.post('/', invoiceTypeController.create);
+    router.put('/:invoice_type_id', invoiceTypeController.update);
+    router.delete('/:invoice_type_id', invoiceTypeController.delete);
 }

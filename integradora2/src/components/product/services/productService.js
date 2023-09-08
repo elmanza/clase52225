@@ -32,6 +32,11 @@ class Product {
     return newProduct;
   }
 
+  async update(_id, payload) {
+    return await productModel.updateOne({ _id }, { ...payload }, { new: true });
+  }
+
+
   async delete(id = null){
     if(id) return await productModel.findByIdAndDelete(id);
     return await productModel.deleteMany({});

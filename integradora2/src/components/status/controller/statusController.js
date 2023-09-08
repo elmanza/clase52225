@@ -39,6 +39,26 @@ class Status {
       next(error)
     }
   }
+
+  async update(req, res, next) {
+    try {
+      const { status_id } = req.params;
+      const response = await statusServices.update(status_id, req.body);
+      res.json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async delete(req, res, next) {
+    try {
+      const { status_id } = req.params;
+      const response = await statusServices.delete(status_id);
+      res.json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new Status();

@@ -1,30 +1,24 @@
 const countryModel = require("../../../models/mongoose/country");
 
 class Country {
-  async get(id = null) {
-    try {
-      return id ? await countryModel.findById(id) : await countryModel.find({});
-    } catch (error) {
-      return { response: "Hubo un error!" };
-    }
+
+  async get(id = null, projection = {}) {
+    return id ? await countryModel.findById(id, projection) : await countryModel.find({}, projection);
   }
 
   async create(payload) {
-    try {
-      return await countryModel.create(payload);
-    } catch (error) {
-      console.log(error);
-    }
+    return await countryModel.create(payload);
   }
 
-  async delete(id = null) {
-    try {
-      if (id) return await countryModel.findByIdAndDelete(id);
-      return await countryModel.deleteMany({});
-    } catch (error) {
-      console.log(error);
-    }
+  async update(_id, payload) {
+    return await countryModel.updateOne({ _id }, { ...payload }, { new: true });
   }
+
+  async delete(id = null){
+    if(id) return await countryModel.findByIdAndDelete(id);
+    return await countryModel.deleteMany({});
+  }
+  
 }
 
 module.exports = new Country();
