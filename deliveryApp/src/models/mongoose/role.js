@@ -5,7 +5,7 @@ const collectionName = "roles";
 const collectionSchema = new Schema({
     name: {
         type: String,
-        enum: ['USER', 'COMPANY', 'ADMIN'],
+        enum: ['USER', 'COMPANY', 'ADMIN', 'PREMIUM'],
         default: 'ADMIN',
         unique: true
       },

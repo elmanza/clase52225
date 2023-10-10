@@ -6,4 +6,5 @@ module.exports = (app) =>{
     router.get('/', productController.getAll);
     router.get('/:product_id', productController.get);
     router.post('/', productController.create);
+    router.post('/', productController.delete);
 }

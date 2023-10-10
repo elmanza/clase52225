@@ -8,6 +8,11 @@ class Product {
   async create(payload) {
     return await productModel.create(payload);
   }
+
+  async delete(id = null) {
+    if(id) return await productModel.findByIdAndDelete(id)
+    return await productModel.deleteMany({});
+  }
 }
 
 module.exports = new Product();

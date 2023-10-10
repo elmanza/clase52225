@@ -8,9 +8,9 @@ const userApi = require('../components/user');
 const mailerApi = require('../components/mailer');
 
 module.exports = app => {
-  // authApi(app);
-  // userApi(app);
-  // roleApi(app);
+  authApi(app);
+  userApi(app);
+  roleApi(app);
   // cartpi(app);
   // companyApi(app);
   // orderApi(app);

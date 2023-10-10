@@ -1,0 +1,11 @@
+<script>
+    const userInfo = <%- JSON.stringify(user) %>;
+    localStorage.setItem('userData', JSON.stringify(userInfo));
+    console.log("@@", userInfo);
+</script>
+
+<%= user.name %>
+
+<h1>Hola soy Dashboard</h1>
+
+<!-- Local Storage -->

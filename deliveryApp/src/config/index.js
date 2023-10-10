@@ -10,7 +10,8 @@ const config = {
     nodemailer_pass: process.env.NODE_MAILER_PASSWORD,
     twilio_sid: process.env.TWILIO_ACC_SID,
     twilio_auth_token: process.env.TWILIO_AUTH_TOKEN,
-    twilio_phone_number: '+13342139821'
+    twilio_phone_number: '+13342139821',
+    dns_frontend: process.env.DNS_FRONTEND,
 }
 
 const mongo = {

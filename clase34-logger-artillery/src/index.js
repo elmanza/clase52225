@@ -12,6 +12,8 @@ const { config, mongo } = require("./config");
 const MongoDB = require('./config/mongoDB');
 const ErrorMiddlewares = require('./utils/middlewares/errorMidlewares');
 const logger = require("./utils/winston");
+const cluster = require("cluster");
+const CPUS = require("os").cpus();
 
 class Server {
   constructor(){
@@ -87,7 +89,19 @@ class Server {
   }
 
   listen(){
-    this.app.listen(config.port, (e) => console.log(`http://localhost:${config.port}`))
+    if(cluster.isPrimary){
+      console.log(`Master PID -> ${process.pid}`);
+      for (let i = 0; i < CPUS.length; i++) {
+        cluster.fork();
+      }
+      cluster.on("exit", (worker, a, b)=> {
+        console.log(`Se cayó nuestro worker, -> PID: ${worker.process.pid}`);
+        cluster.fork();
+      });
+    } else {
+      this.app.listen(config.port, (e) => console.log(`SERVER ON http://localhost:${config.port} , PID: ${process.pid}`));
+    }
+    
   }
 
 }

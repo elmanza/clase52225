@@ -1,4 +1,5 @@
 const statusModel = require("../../models/mongoose/status");
+const roleModel = require("../../models/mongoose/role");
 
 let status;
 const STATUS = async () => {
@@ -11,6 +12,17 @@ const getStatus =  async (query = {}) => {
   return buildConstantsObject(statuses);
 }
 
+let roles;
+const ROLES = async () => {
+  roles = roles || (await getRoles());
+  return roles;
+}
+
+const getRoles =  async (query = {}) => {
+  const role = await roleModel.find(query);
+  return buildConstantsObject(role);
+}
+
 
 const buildConstantsObject = records => {
   let result = {};
@@ -21,5 +33,6 @@ const buildConstantsObject = records => {
 }
 
 module.exports = {
-  STATUS
+  STATUS,
+  ROLES
 }

@@ -13,7 +13,7 @@ class User {
       password: createHash(payload.password),
       token: ""
     }
-    let user = await userModel.create(payload);
+    let user = await userModel.create(userDTO);
     let token = await generateJWT({id: user._id});
     let userUpdated = userModel.findByIdAndUpdate(user._id, {token}, { new: true });
     if(payload?.company){
@@ -25,6 +25,16 @@ class User {
      userUpdated = {...userUpdated, company: { ...company }}
     }
     return userUpdated;
+  }
+
+  async findByEmail(email) {
+    return await userModel.findOne({
+      email: email
+    });
+  }
+
+  async update(id,objUpdated){
+    return await userModel.findByIdAndUpdate(id, {...objUpdated}, { new: true });
   }
 }
 
