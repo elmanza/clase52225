@@ -26,32 +26,32 @@ class Server {
 
   middlewares(){
     this.app.use(cors());
-    this.app.use(cookie(`${config.cookie_key}`));
-    this.app.use(sessions({
-      store: MongoStore.create({
-        mongoUrl: mongo.mongo_atlas,
-        mongoOptions: { useUnifiedTopology: true },
-        ttl: 14 * 24 * 60 * 60, // = 14 days. Default
-        touchAfter: 24 * 3600 // time period in seconds
-      }),
-      secret: config.session_key,
-      resave: false,
-      saveUninitialized: false,
-      cookie: { secure: true },
-      genid: expressSessionId()
-    }));
-    this.app.use((req, res, next) => {
-      if (!req.session?.cart) {
-        req.session.cart = [{
-          _id: req.sessionID,
-          createdAt: new Date().toLocaleDateString(),
-          status_id: null,
-          products: []
-        }];
-        req.session.wishlist = [];
-      }
-      next();
-    });
+    // this.app.use(cookie(`${config.cookie_key}`));
+    // this.app.use(sessions({
+    //   store: MongoStore.create({
+    //     mongoUrl: mongo.mongo_atlas,
+    //     mongoOptions: { useUnifiedTopology: true },
+    //     ttl: 14 * 24 * 60 * 60, // = 14 days. Default
+    //     touchAfter: 24 * 3600 // time period in seconds
+    //   }),
+    //   secret: config.session_key,
+    //   resave: false,
+    //   saveUninitialized: false,
+    //   cookie: { secure: false },
+    //   genid: expressSessionId()
+    // }));
+    // this.app.use((req, res, next) => {
+    //   if (!req.session?.cart) {
+    //     req.session.cart = [{
+    //       _id: req.sessionID,
+    //       createdAt: new Date().toLocaleDateString(),
+    //       status_id: null,
+    //       products: []
+    //     }];
+    //     req.session.wishlist = [];
+    //   }
+    //   next();
+    // });
   }
 
   settings(){
@@ -86,7 +86,7 @@ class Server {
   }
 
   listen(){
-    this.app.listen(config.port, (e) => console.log(`http:localhost:${config.port}`))
+    this.app.listen(config.port, (e) => console.log(`http://localhost:${config.port}`))
   }
 
 }

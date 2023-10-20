@@ -4,17 +4,17 @@ const JWTService = require("../../../utils/JWT/jwt");
 const { createHash, isValidPassword } = require("../../../utils/bcrypt");
 const faker = require("faker");
 const Boom = require("@hapi/boom");
-const cartService = require("../../cart/services/cartService");
-const wishlistService = require("../../wishlist/services/wishlistService");
+// const cartService = require("../../cart/services/cartService");
+// const wishlistService = require("../../wishlist/services/wishlistService");
 class Auth {
 
-  async login({email, password, transfer = false}, {cart, wishlist}){
+  async login({email, password, transfer = false}){
     const user = await userService.findByEmail(email);
     if(!user) throw Boom.unauthorized("Credenciales inválidas");
     if(!isValidPassword(password, user)) throw Boom.unauthorized("Credenciales inválidas");
     const token = await JWTService.generateJWT({id: user._id});
     if (transfer) {
-      if (cart.length) await cartService.transferCartFromSessions(user._id, cart[0].products);
+      // if (cart.length) await cartService.transferCartFromSessions(user._id, cart[0].products);
       // if (wishlist.length) await wishlistService.transferWishlistFromSessions(user._id, wishlist);
     }
     return await userService.updateUser(user._id, {token});
